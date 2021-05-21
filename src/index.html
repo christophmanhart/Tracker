@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlkoholTracker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -25,23 +29,23 @@
                 </tr>
                 <tr>
                     <td>Im Bestand (Liter)</td>
-                    <td id="bierbestand">3</td>
-                    <td id="weinbestand">5</td>
+                    <td id="bierbestand"></td>
+                    <td id="weinbestand"></td>
                 </tr>
                 <tr>
                     <td>Erwünschte Mindestmenge (Liter)</td>
-                    <td>10</td>
-                    <td>2</td>
+                    <td id="biermin"></td>
+                    <td id="weinmin"></td>
                 </tr>
                 <tr>
                     <td>Differenz</td>
-                    <td id="differenzbier">-7</td>
-                    <td id="differenzwein">+3</td>
+                    <td id="differenzbier"></td>
+                    <td id="differenzwein"></td>
                 </tr>
                 <tr>
                     <td>Nachkaufen?</td>
-                    <td id="nachkaufenbier">Ja!</td>
-                    <td id="nachkaufenwein">Nein</td>
+                    <td id="nachkaufenbier"></td>
+                    <td id="nachkaufenwein"></td>
                 </tr>
             </table>
         </div>
@@ -53,17 +57,17 @@
                     <tr>
                         <td>Getränk</td>
                         <td>
-                            <button class="dropbtn">Auswählen</button>
-                            <div class="dropdown-content">
-                                <a href="#">Bier</a>
-                                <a href="#">Wein</a>
-                            </div>
+                            <select name="Auswählen" id="getraenkeauswahl">
+                                <option value="Bier">Bier</option>
+                                <option value="Wein">Wein</option>
+                            </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label for="quantity">Bestandsveränderung (Litern):</label>
                             <input type="number" id="quantity" name="quantity" min="-50" max="50">
+                            <button id="buchenButton">Buchen</button>
                         </td>
                     </tr>
                 </table>
