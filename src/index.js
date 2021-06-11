@@ -73,7 +73,8 @@ $('#buchenButton').on('click',()=>{
         .doc(kategorie)
         .get()
         .then(value => {
-            const aktuellerBestand = value.data()['bestand'];
+            const aktVerbrauch = value.data()['Gesamtverbrauch'];
+            const  aktuellerBestand= value.data()['bestand'];
             const neuerBestand = parseInt(aktuellerBestand) + parseInt(menge) ;
             db
                 .collection("Getraenke")
@@ -84,6 +85,15 @@ $('#buchenButton').on('click',()=>{
                 console.log("Wurde Eingetragen");
                 location.reload();
             })
+            if(menge<0)
+            {
+                db
+                    .collection("Getraenke")
+                    .doc(kategorie)
+                    .update({
+                        'Gesamtverbrauch' : aktVerbrauch + (parseInt(menge)*-1)
+                    })
+            }
 
         });
 });
