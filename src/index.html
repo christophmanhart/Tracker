@@ -18,47 +18,49 @@
 </header>
 
 <!-- Inhalt der Seite -->
-<img id="site-logo" src="Desktop/Basis/Bier.jpg" alt="Bier" width="50" height="50"><img
-        src="../../Desktop/Basis/Bier.jpg" height="50" width="50"/>
+<img id="site-logo" src="images/logo.png" alt="Bier" width="50" height="50"><img
+        src="images/logo.png" height="50" width="50"/>
 <p id="claim">Keep Track Of Your Alcohol Stock</p>
 
 <div>
     <main>
-        <div>
+        <div id="uebersicht">
             <h2>Übersicht</h2>
-            <table>
+            <table id="uebersichtstabelle">
                 <tr>
-                    <td>Getränkesorte</td>
-                    <td>Bier</td>
-                    <td>Wein</td>
+                    <th id="linkespalte">Getränkesorte</td>
+                    <th>Bier</td>
+                    <th>Wein</td>
                 </tr>
                 <tr>
-                    <td>Im Bestand (Liter)</td>
+                    <td id="linkespalte">Im Bestand (Liter)</td>
                     <td id="bierbestand"></td>
                     <td id="weinbestand"></td>
                 </tr>
                 <tr>
-                    <td>Erwünschte Mindestmenge (Liter)</td>
+                    <td id="linkespalte">Erwünschte Mindestmenge (Liter)</td>
                     <td id="biermin"></td>
                     <td id="weinmin"></td>
                 </tr>
                 <tr>
-                    <td>Differenz</td>
+                    <td id="linkespalte">Differenz</td>
                     <td id="differenzbier"></td>
                     <td id="differenzwein"></td>
                 </tr>
                 <tr>
-                    <td>Nachkaufen?</td>
+                    <td id="linkespalte">Nachkaufen?</td>
                     <td id="nachkaufenbier"></td>
                     <td id="nachkaufenwein"></td>
                 </tr>
             </table>
         </div>
 
-        <div>
+        <br>
+
+        <div id="buchung">
             <article>
                 <h2>Buchung tätigen</h2>
-                <table>
+                <table id="buchungstabelle">
                     <tr>
                         <td>Getränk</td>
                         <td>
@@ -71,6 +73,8 @@
                     <tr>
                         <td>
                             <label for="quantity">Bestandsveränderung (Litern):</label>
+                        </td>
+                        <td>
                             <input type="number" id="quantity" name="quantity" min="-50" max="50">
                             <button id="buchenButton">Buchen</button>
                         </td>
@@ -82,7 +86,7 @@
         <div>
             <article>
                 <h2>Liebling des Monats</h2>
-                <img id="liebling-des-monats" src="logo.png" alt="lieblingdesmonats">
+                <img id="liebling-des-monats" src="images/logo.png" alt="lieblingdesmonats" width="200" height="200">
             </article>
         </div>
     </main>
@@ -93,16 +97,16 @@
     <p>Copyright 2021 by Gruppe Alc</p>
 </footer>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="/__/firebase/8.6.2/firebase-app.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/8.6.2/firebase-app.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-         https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
-    <!-- Initialize Firebase -->
-    <script src="/__/firebase/init.js"></script>
-    <script type="module" src="index.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+<script type="module" src="index.js"></script>
 
 </body>
 </html>

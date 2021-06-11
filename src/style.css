@@ -1,3 +1,67 @@
 body {
-	background-color: cornsilk;
-	}
+	background-image: url('./images/lecker-bier.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+
+
+
+	/* background-color: cornsilk; */
+	text-align: center;
+
+	font-family: Franklin Gothic Medium, Impact, Copperplate, fantasy;
+
+
+
+	/* uebersichtstabelle {
+  width: 15em;
+  border: 1px solid #333;
+  box-shadow: 8px 8px 5px #444;
+  padding: 8px 12px;
+  background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
+} */
+
+}
+
+table, th, td {
+	border: 1px solid black;
+	/* box-shadow: 2px 2px; */
+}
+
+
+#uebersicht{
+	width: 70%;
+	max-width: 400px;
+	margin: auto;
+	padding: 20px;
+	border: 10px solid #666;
+	box-shadow: 8px 8px 5px #444;
+	background: #ffffff;
+}
+
+#uebersichtstabelle{
+	width: 100%;
+	/* border: 1px solid black; */
+}
+
+#linkespalte{
+	text-align: left;
+}
+
+#buchung{
+	width: 70%;
+	max-width: 400px;
+	margin: auto;
+	padding: 20px;
+	/* padding-top: 90px; */
+	border: 10px solid #666;
+	/* border-top: 0px; */
+	box-shadow: 8px 8px 5px #444;
+	background: #ffffff;
+}
+
+#buchungstabelle{
+	width: 100%;
+	/* border: 1px solid black; */
+}

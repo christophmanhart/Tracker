@@ -61,7 +61,7 @@ $('#buchenButton').on('click',()=>{
         alert('KEINER TRINKT SO VIEL!');
         return;
     }
-else
+    else
         menge = uncheckedMenge;
 
 
@@ -73,17 +73,17 @@ else
         .doc(kategorie)
         .get()
         .then(value => {
-           const aktuellerBestand = value.data()['bestand'];
-           const neuerBestand = parseInt(aktuellerBestand) + parseInt(menge) ;
+            const aktuellerBestand = value.data()['bestand'];
+            const neuerBestand = parseInt(aktuellerBestand) + parseInt(menge) ;
             db
                 .collection("Getraenke")
                 .doc(kategorie)
                 .update({
-                'bestand' : neuerBestand
+                    'bestand' : neuerBestand
                 }).then(  value=>{
                 console.log("Wurde Eingetragen");
                 location.reload();
             })
 
-    });
+        });
 });
