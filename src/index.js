@@ -18,7 +18,10 @@ db.collection("Getraenke").get().then(value => {
 
     const ids = [
         ['bierbestand', 'biermin', 'differenzbier', 'nachkaufenbier'],
+        ['sektbestand', 'sektmin', 'differenzsekt', 'nachkaufensekt'],
         ['weinbestand', 'weinmin', 'differenzwein', 'nachkaufenwein'],
+        ['whiskybestand', 'whiskymin', 'differenzwhisky', 'nachkaufenwhisky'],
+        ['wodkabestand', 'wodkamin', 'differenzwodka', 'nachkaufenwodka'],
     ];
     const docs = value.docs;
     for (let i = 0; i < docs.length; i++) {
@@ -94,35 +97,12 @@ db.collection("Getraenke").get().then(value => {
 
             const kategorie = $('#getraenkeauswahl').val();
 
-            db
-                .collection("Getraenke")
-                .doc(kategorie)
-                .get()
-                .then(value => {
-                    const aktVerbrauch = value.data()['Gesamtverbrauch'];
-                    const aktuellerBestand = value.data()['bestand'];
-                    const neuerBestand = parseInt(aktuellerBestand) + parseInt(menge);
-                    db
-                        .collection("Getraenke")
-                        .doc(kategorie)
-                        .update({
-                            'bestand': neuerBestand
-                        }).then(value => {
-                        console.log("Wurde Eingetragen");
-                        location.reload();
-                    })
-                    if (menge < 0) {
-                        db
-                            .collection("Getraenke")
-                            .doc(kategorie)
-                            .update({
-                                'Gesamtverbrauch': aktVerbrauch + (parseInt(menge) * -1)
-                            })
-                    }
+            buchen(kategorie,menge);
+
             ermittleLiebling();
 
         });
-});
+
         function ermittleLiebling(){
             var bier = -1;
             var wein = -1
@@ -150,3 +130,33 @@ db.collection("Getraenke").get().then(value => {
                         });
                 });
         }
+
+        function buchen(kategorie,menge){
+            db
+                .collection("Getraenke")
+                .doc(kategorie)
+                .get()
+                .then(value => {
+                    const aktVerbrauch = value.data()['Gesamtverbrauch'];
+                    const aktuellerBestand = value.data()['bestand'];
+                    const neuerBestand = parseInt(aktuellerBestand) + parseInt(menge);
+                    db
+                        .collection("Getraenke")
+                        .doc(kategorie)
+                        .update({
+                            'bestand': neuerBestand
+                        }).then(value => {
+                        console.log("Wurde Eingetragen");
+                        location.reload();
+                    })
+                    if (menge < 0) {
+                        db
+                            .collection("Getraenke")
+                            .doc(kategorie)
+                            .update({
+                                'Gesamtverbrauch': aktVerbrauch + (parseInt(menge) * -1)
+                            })
+                    }
+        })
+        }
+
