@@ -1,49 +1,12 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyD6mIN2RjGLihi15-W-IlWZhP8z1JDqkH8",
-    authDomain: "alkoholdatenbank.firebaseapp.com",
-    databaseURL: "https://alkoholdatenbank-default-rtdb.firebaseio.com",
-    projectId: "alkoholdatenbank",
-    storageBucket: "alkoholdatenbank.appspot.com",
-    messagingSenderId: "142784195708",
-    appId: "1:142784195708:web:e87fca0cdf84507c342df9"
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
 const db = firebase.firestore();
 
-
 db.collection("Getraenke").get().then(value => {
-
-    const ids = [
-        ['bierbestand', 'biermin', 'differenzbier', 'nachkaufenbier'],
-        ['weinbestand', 'weinmin', 'differenzwein', 'nachkaufenwein'],
-    ];
     const docs = value.docs;
     for (let i = 0; i < docs.length; i++) {
-        const data = docs[i].data();
-        console.log(data);
-        const bestand = data['bestand'];
-        const gewuenschteMenge = data['gewuenschteMenge'];
-        const differenz = bestand - gewuenschteMenge;
-        const nachkaufen = differenz > 0 ? 'Nein' : 'Ja!';
-
-        const localId = ids[i];
-
-        //bestand
-        $('#' + localId[0]).text(bestand);
-
-        //Menge
-        $('#' + localId[1]).text(gewuenschteMenge);
-
-        //differenz
-        $('#' + localId[2]).text(differenz);
-
-        //nachkaufen
-        $('#' + localId[3]).text(nachkaufen);
-
+        const snapshot = docs[i];
+        CreateTableEntryForItem(snapshot);
     }
+    CreateCharts(docs);
     db
         .collection("DateCheck")
         .doc("Date")
@@ -81,6 +44,12 @@ db.collection("Getraenke").get().then(value => {
         $('#buchenButton').on('click', () => {
 
             const uncheckedMenge = $('#quantity').val();
+
+            if(!isNumeric(uncheckedMenge)){
+                alert('Bitte nur Zahlen eingeben! 🤢');
+                return;
+            }
+
             let menge = 0;
             if (uncheckedMenge > 50) {
                 alert('DIGGA WAS HAST DU VOR? 🤢');
@@ -123,30 +92,95 @@ db.collection("Getraenke").get().then(value => {
 
         });
 });
-        function ermittleLiebling(){
-            var bier = -1;
-            var wein = -1
+
+function ermittleLiebling(){
+    var bier = -1;
+    var wein = -1
+    db
+        .collection("Getraenke")
+        .doc("Bier")
+        .get()
+        .then(value => {
+            bier = value.data()['Gesamtverbrauch'];
+            console.log(bier);
+
             db
                 .collection("Getraenke")
-                .doc("Bier")
+                .doc("Wein")
                 .get()
                 .then(value => {
-                    bier = value.data()['Gesamtverbrauch'];
-                    console.log(bier);
-
-                    db
-                        .collection("Getraenke")
-                        .doc("Wein")
-                        .get()
-                        .then(value => {
-                            wein = value.data()['Gesamtverbrauch'];
-                            console.log(wein);
-                            if((wein*8.5)<(bier*5)){
-                                document.getElementById('liebling').innerHTML = ("Bier: " + bier + "l")
-                            }
-                            else{
-                                document.getElementById('liebling').innerHTML = ("Wein: " + wein + "l")
-                            }
-                        });
+                    wein = value.data()['Gesamtverbrauch'];
+                    console.log(wein);
+                    if((wein*8.5)<(bier*5)){
+                        document.getElementById('liebling').innerHTML = ("Bier: " + bier + "l")
+                    }
+                    else{
+                        document.getElementById('liebling').innerHTML = ("Wein: " + wein + "l")
+                    }
                 });
+        });
+}
+
+function isNumeric(str) {
+    if (typeof str != "string") return false // we only process strings!
+    return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+        !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+}
+
+function CreateTableEntryForItem(snapshot){
+
+    const data = snapshot.data();
+    console.log(data.id);
+    const bestand = data['bestand'];
+    const gewuenschteMenge = data['gewuenschteMenge'];
+    const differenz = bestand - gewuenschteMenge;
+    const nachkaufen = differenz > 0 ? 'Nein' : 'Ja!';
+
+    //sorte
+    $('#sorten').append(`<th>${snapshot.id}</td>`);
+
+    //bestand
+    $('#bestaende').append(`<th>${bestand}</td>`);
+
+    //Menge
+    $('#min-menge').append(`<th>${gewuenschteMenge}</td>`);
+
+    //differenz
+    $('#diff').append(`<th>${differenz}</td>`);
+
+    //nachkaufen
+    $('#nachkaufen').append(`<th>${nachkaufen}</td>`);
+
+}
+
+function CreateCharts(docs){
+    const ctx = document.getElementById('bestand-chart').getContext('2d');
+    const labels = docs.map(value => value.id);
+    const data = docs.map(value => value.data()['bestand']);
+    const colors = labels.map(_ => GetRandomColor());
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Alkohol Bestand',
+                data: data,
+                backgroundColor: colors,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
+    });
+}
+function GetRandomColor(){
+    return `rgba(${getRandomInt(255)}, ${getRandomInt(255)}, ${getRandomInt(255)}, 0.2)`;
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
