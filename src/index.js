@@ -1,3 +1,16 @@
+const firebaseConfig = {
+    apiKey: "AIzaSyD6mIN2RjGLihi15-W-IlWZhP8z1JDqkH8",
+    authDomain: "alkoholdatenbank.firebaseapp.com",
+    databaseURL: "https://alkoholdatenbank-default-rtdb.firebaseio.com",
+    projectId: "alkoholdatenbank",
+    storageBucket: "alkoholdatenbank.appspot.com",
+    messagingSenderId: "142784195708",
+    appId: "1:142784195708:web:e87fca0cdf84507c342df9"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 const db = firebase.firestore();
 
 
@@ -68,12 +81,6 @@ db.collection("Getraenke").get().then(value => {
         $('#buchenButton').on('click', () => {
 
             const uncheckedMenge = $('#quantity').val();
-
-            if(!isNumeric(uncheckedMenge)){
-                alert('Bitte nur Zahlen eingeben! 🤢');
-                return;
-            }
-
             let menge = 0;
             if (uncheckedMenge > 50) {
                 alert('DIGGA WAS HAST DU VOR? 🤢');
@@ -143,9 +150,3 @@ db.collection("Getraenke").get().then(value => {
                         });
                 });
         }
-
-function isNumeric(str) {
-    if (typeof str != "string") return false // we only process strings!
-    return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
-        !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
-}
