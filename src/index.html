@@ -8,63 +8,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
-
 <body>
-<!-- Inhalt der Seite -->
+
 <header>
-    <img id="site-logo" src="images/logo.png" alt="logo" width="200" height="200">
+    <img id="site-logo" src="images/logo.png" alt="logo" width="200px" height="200px">
     <p id="claim">Keep Track Of Your Alcohol Stock</p>
 </header>
-
-<!-- Inhalt der Seite -->
-<img id="site-logo" src="images/logo.png" alt="Bier" width="50" height="50"><img
-        src="images/logo.png" height="50" width="50"/>
-<p id="claim">Keep Track Of Your Alcohol Stock</p>
-
 <div>
     <main>
         <div id="uebersicht">
             <h2>Übersicht</h2>
             <table id="uebersichtstabelle">
-                <tr>
-                    <th id="linkespalte">Getränkesorte</td>
-                    <th>Bier</td>
-                    <th>Wein</td>
-                    <th>Sekt</td>
-                    <th>Whisky</td>
-                    <th>Wodka</td>
+                <tr id="sorten">
+                    <th>Getränkesorte</td>
                 </tr>
-                <tr>
+                <tr id="bestaende">
                     <td>Im Bestand (Liter)</td>
-                    <td id="bierbestand"></td>
-                    <td id="weinbestand"></td>
-                    <td id="sektbestand"></td>
-                    <td id="whiskybestand"></td>
-                    <td id="wodkabestand"></td>
                 </tr>
-                <tr>
+                <tr id="min-menge">
                     <td>Erwünschte Mindestmenge (Liter)</td>
-                    <td id="biermin"></td>
-                    <td id="weinmin"></td>
-                    <td id="sektmin"></td>
-                    <td id="whiskymin"></td>
-                    <td id="wodkamin"></td>
                 </tr>
-                <tr>
+                <tr id="diff">
                     <td>Differenz</td>
-                    <td id="differenzbier"></td>
-                    <td id="differenzwein"></td>
-                    <td id="differenzsekt"></td>
-                    <td id="differenzwhisky"></td>
-                    <td id="differenzwodka"></td>
                 </tr>
-                <tr>
+                <tr id="nachkaufen">
                     <td>Nachkaufen?</td>
-                    <td id="nachkaufenbier"></td>
-                    <td id="nachkaufenwein"></td>
-                    <td id="nachkaufensekt"></td>
-                    <td id="nachkaufenwhisky"></td>
-                    <td id="nachkaufenwodka"></td>
                 </tr>
             </table>
         </div>
@@ -100,16 +68,24 @@
             </article>
         </div>
 
+
+
+
         <div>
             <article>
                 <h2>Liebling des Monats</h2>
-                <h2 id="liebling">None</h2>
+                <h2 id="lieblin">None</h2>
                 <img id="liebling-des-monats" src="images/logo.png" alt="lieblingdesmonats" width="200" height="200">
 
             </article>
         </div>
+
+        <div class="chart-container">
+            <canvas id="bestand-chart"></canvas>
+        </div>
     </main>
-</div id="liebling">
+
+</div>
 
 <footer>
     <a href="impressum.html">Impressum</a>
@@ -123,6 +99,7 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
 <!-- Initialize Firebase -->
 <script src="/__/firebase/init.js"></script>
 <script type="module" src="index.js"></script>

@@ -1,5 +1,5 @@
 body {
-	background-image: url('./images/lecker-bier.jpg');
+	//background-image: url('./images/lecker-bier.jpg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;
@@ -64,4 +64,11 @@ table, th, td {
 #buchungstabelle{
 	width: 100%;
 	/* border: 1px solid black; */
+}
+
+.chart-container{
+	height:50vh;
+	width:70%;
+	margin: 0 auto;
+	padding: 36px 0 0 36px;
 }
