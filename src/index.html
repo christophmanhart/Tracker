@@ -12,13 +12,13 @@
 <body>
 <div id="main">
     <header id="headerlogo">
-        <img id="site-logo" src="images/logo.png" alt="logo" width="200px" height="200px">
+        <img id="site-logo" src="images/logo.png" alt="logo" width="250px" height="250px">
         <p id="slogan">Keep Track Of Your Alcohol Stock</p>
     </header>
     <main>
 	
         <div id="uebersicht">
-            <h2 id="claim">Übersicht</h2>
+            <h2 class="claim">Übersicht</h2>
             <table id="uebersichtstabelle">
                 <tr id="sorten">
                     <th>Getränkesorte</td>
@@ -43,15 +43,15 @@
         
         <div id="buchung">
             <article>
-                <h2 id="claim">Buchung tätigen</h2>
+                <h2 class="claim">Buchung tätigen</h2>
                 <table id="buchungstabelle">
                     <tr>
                         <td>Getränk</td>
                         <td>
                             <select name="Auswählen" id="getraenkeauswahl">
                                 <option value="Bier">Bier</option>
-                                <option value="Wein">Wein</option>
                                 <option value="Sekt">Sekt</option>
+                                <option value="Wein">Wein</option>
                                 <option value="Whisky">Whisky</option>
                                 <option value="Wodka">Wodka</option>
                             </select>
@@ -71,17 +71,16 @@
             </article>
         </div>
 		
-        <div>
-            <article  id="liebling">
-                <h2 id="claim">Liebling des Monats</h2>
-                <h2>None</h2>
+        <div class="box">
+            <article>
+                <h2 class="claim">Liebling des Monats</h2>
+                <h2 id="liebling">None</h2>
 				<!--<img id="liebling-des-monats" src="images/logo.png" alt="lieblingdesmonats" width="200" height="200">-->
             </article>
         </div>
     </main>
 	<br>
     <footer id="impressum">
-        <a href="impressum.html">Impressum</a>
         <p>Copyright 2021 by Gruppe Alc</p>
     </footer>
 </div>

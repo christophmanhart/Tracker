@@ -26,11 +26,11 @@ table, th, td {
 
 #slogan{
 	font-family: 'comic_zine_otregular';
-	font-size: 4rem;
+	font-size: 6rem;
 	font-weight: bold;
 }
 
-#claim{
+.claim{
 	font-family: 'comic_zine_otregular';
 	font-size: 5rem;
 	font-weight: normal;
@@ -101,6 +101,16 @@ table, th, td {
 }
 
 #liebling{
+	width: 60%;
+	min-width: 400px;
+	margin: auto;
+	padding: 20px;
+	border: 10px solid cornsilk;
+	box-shadow: 8px 8px 10px #444;
+	background: #ffffff;
+}
+
+.box{
 	width: 60%;
 	min-width: 400px;
 	margin: auto;
