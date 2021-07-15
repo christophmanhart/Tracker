@@ -7,19 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlkoholTracker</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 </head>
+
 <body>
-
-
 <div id="main">
-    <header>
+    <header id="headerlogo">
         <img id="site-logo" src="images/logo.png" alt="logo" width="200px" height="200px">
-        <p id="claim">Keep Track Of Your Alcohol Stock</p>
+        <p id="slogan">Keep Track Of Your Alcohol Stock</p>
     </header>
     <main>
+	
         <div id="uebersicht">
-            <h2>Übersicht</h2>
+            <h2 id="claim">Übersicht</h2>
             <table id="uebersichtstabelle">
                 <tr id="sorten">
                     <th>Getränkesorte</td>
@@ -37,14 +36,14 @@
                     <td>Nachkaufen?</td>
                 </tr>
             </table>
-        </div>
-        <div class="chart-container">
+			<div class="chart-container">
             <canvas id="bestand-chart"></canvas>
+			</div>
         </div>
-
+        
         <div id="buchung">
             <article>
-                <h2>Buchung tätigen</h2>
+                <h2 id="claim">Buchung tätigen</h2>
                 <table id="buchungstabelle">
                     <tr>
                         <td>Getränk</td>
@@ -64,27 +63,24 @@
                         </td>
                         <td>
                             <input type="number" id="quantity" name="quantity" min="-50" max="50">
-                            <button id="buchenButton">Buchen</button>
                         </td>
                     </tr>
                 </table>
+				<br>
+				<button class="button buchenBtn" id="buchenButton">Buchen</button>
             </article>
-
         </div>
-
-
+		
         <div>
-            <article>
-                <h2>Liebling des Monats</h2>
-                <h2 id="liebling">None</h2>
-<!--                <img id="liebling-des-monats" src="images/logo.png" alt="lieblingdesmonats" width="200" height="200">-->
-
+            <article  id="liebling">
+                <h2 id="claim">Liebling des Monats</h2>
+                <h2>None</h2>
+				<!--<img id="liebling-des-monats" src="images/logo.png" alt="lieblingdesmonats" width="200" height="200">-->
             </article>
         </div>
-
-
     </main>
-    <footer>
+	<br>
+    <footer id="impressum">
         <a href="impressum.html">Impressum</a>
         <p>Copyright 2021 by Gruppe Alc</p>
     </footer>
