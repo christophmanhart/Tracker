@@ -11,11 +11,12 @@
 </head>
 <body>
 
-<header>
-    <img id="site-logo" src="images/logo.png" alt="logo" width="200px" height="200px">
-    <p id="claim">Keep Track Of Your Alcohol Stock</p>
-</header>
-<div>
+
+<div id="main">
+    <header>
+        <img id="site-logo" src="images/logo.png" alt="logo" width="200px" height="200px">
+        <p id="claim">Keep Track Of Your Alcohol Stock</p>
+    </header>
     <main>
         <div id="uebersicht">
             <h2>Übersicht</h2>
@@ -37,8 +38,9 @@
                 </tr>
             </table>
         </div>
-
-        <br>
+        <div class="chart-container">
+            <canvas id="bestand-chart"></canvas>
+        </div>
 
         <div id="buchung">
             <article>
@@ -67,31 +69,28 @@
                     </tr>
                 </table>
             </article>
+
         </div>
-
-
 
 
         <div>
             <article>
                 <h2>Liebling des Monats</h2>
-                <h2 id="lieblin">None</h2>
-                <img id="liebling-des-monats" src="images/logo.png" alt="lieblingdesmonats" width="200" height="200">
+                <h2 id="liebling">None</h2>
+<!--                <img id="liebling-des-monats" src="images/logo.png" alt="lieblingdesmonats" width="200" height="200">-->
 
             </article>
         </div>
 
-        <div class="chart-container">
-            <canvas id="bestand-chart"></canvas>
-        </div>
-    </main>
 
+    </main>
+    <footer>
+        <a href="impressum.html">Impressum</a>
+        <p>Copyright 2021 by Gruppe Alc</p>
+    </footer>
 </div>
 
-<footer>
-    <a href="impressum.html">Impressum</a>
-    <p>Copyright 2021 by Gruppe Alc</p>
-</footer>
+
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="/__/firebase/8.6.2/firebase-app.js"></script>
